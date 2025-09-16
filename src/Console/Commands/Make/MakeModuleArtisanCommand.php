@@ -1,0 +1,68 @@
+<?php
+
+namespace RCV\Core\Console\Commands\Make;
+
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
+class MakeModuleArtisanCommand extends Command
+{
+    protected $signature = 'module:make-command 
+                            {name : The command class name (can include subdirectories)} 
+                            {module : The module name}';
+    protected $description = 'Generate a new Artisan command for the specified module';
+
+    public function handle()
+    {
+        $module = Str::studly($this->argument('module'));    // e.g., Blog
+        $nameInput = $this->argument('name');                // e.g., Sync/Posts
+
+        // --- Handle subdirectories ---
+        $parts = preg_split('/[\/\\\\]+/', $nameInput);
+        $className = Str::studly(array_pop($parts));
+        $subPath = implode('/', array_map([Str::class, 'studly'], $parts));
+        $subNamespace = implode('\\', array_map([Str::class, 'studly'], $parts));
+
+        // --- Paths & Namespace ---
+        $moduleBasePath = base_path("Modules/{$module}");
+        if (!File::exists($moduleBasePath)) {
+            $this->error("Module '{$module}' does not exist.");
+            return Command::FAILURE;
+        }
+
+        $directory = $moduleBasePath . "/src/Console/Commands" . ($subPath ? "/{$subPath}" : '');
+        $filePath = "{$directory}/{$className}.php";
+        $namespace = "Modules\\{$module}\\Console\\Commands" . ($subNamespace ? "\\{$subNamespace}" : '');
+
+        if (File::exists($filePath)) {
+            $this->error("Command already exists: {$filePath}");
+            return Command::FAILURE;
+        }
+
+        File::ensureDirectoryExists($directory);
+
+        // --- Load stub ---
+        $stubPath = __DIR__ . '/../stubs/console-command.stub';
+        if (!File::exists($stubPath)) {
+            $this->error("Stub file not found at: {$stubPath}");
+            return Command::FAILURE;
+        }
+
+        $stub = File::get($stubPath);
+
+        // --- Replace placeholders ---
+        $content = str_replace(
+            ['{{namespace}}', '{{class}}', '{{signature}}'],
+            [$namespace, $className, Str::kebab($className)],
+            $stub
+        );
+
+        File::put($filePath, $content);
+
+        $this->info("Artisan command '{$className}' created successfully in module '{$module}'.");
+        $this->info("Path: {$filePath}");
+
+        return Command::SUCCESS;
+    }
+}
