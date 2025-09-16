@@ -7,7 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 
 class MakeModuleFactory extends Command
 {
-    protected $signature = 'module:make-factory 
+    protected $signature = 'module:make-factory
                             {name : The name of the factory}
                             {module : The name of the module}';
 
@@ -56,7 +56,7 @@ class MakeModuleFactory extends Command
 
 protected function getStub(): string
 {
-    $stubPath = base_path('vendor/rcv/core/src/Console/Commands/stubs/factory.stub');
+    $stubPath = base_path('vendor/rcvtech/laravel-modules/src/Console/Commands/stubs/factory.stub');
 
     if (!file_exists($stubPath)) {
         throw new \RuntimeException("Stub file not found at: {$stubPath}");

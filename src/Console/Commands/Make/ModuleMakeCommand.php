@@ -149,7 +149,7 @@ class ModuleMakeCommand extends Command
 
     protected function registerModuleInCoreConfig(): void
     {
-        $configPath = base_path('vendor/rcv/core/src/Config/config.php');
+        $configPath = base_path('vendor/rcvtech/laravel-modules/src/Config/config.php');
 
         if (!File::exists($configPath)) {
             $this->error("Core config file not found: $configPath");
