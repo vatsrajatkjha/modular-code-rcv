@@ -1,5 +1,6 @@
 {
-    "name": "rcv/core",
+    "name": "rcvtech/laravel-modules",
+    "version": "1.0.0",
     "description": "Enterprise-Grade Modular Architecture for Laravel Applications - A powerful Laravel package that revolutionizes application development with robust Service Repository Pattern, Dynamic Module Management, and 50+ Artisan commands for scalable, maintainable applications.",
     "type": "library",
     "license": "MIT",
@@ -16,13 +17,12 @@
         "development",
         "artisan",
         "commands",
-        "dynamic-loading",
-        "microservices"
+        "dynamic-loading"
     ],
     "homepage": "https://const-ant-laravel-corex-docs.vercel.app/",
     "support": {
-        "issues": "https://github.com/RCV-Technologies/laravel-module/issues",
-        "source": "https://github.com/RCV-Technologies/laravel-module",
+        "issues": "https://github.com/vatsrajatkjha/modular-code-rcv/issues",
+        "source": "https://github.com/vatsrajatkjha/modular-code-rcv/laravel-module",
         "docs": "https://const-ant-laravel-corex-docs.vercel.app/",
         "email": "support@rcvtechnologies.com"
     },
