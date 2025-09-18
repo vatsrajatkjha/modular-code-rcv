@@ -1,6 +1,6 @@
 {
     "name": "rcvtech/laravel-modules",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Enterprise-Grade Modular Architecture for Laravel Applications - A powerful Laravel package that revolutionizes application development with robust Service Repository Pattern, Dynamic Module Management, and 50+ Artisan commands for scalable, maintainable applications.",
     "type": "library",
     "license": "MIT",
