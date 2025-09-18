@@ -11,12 +11,8 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/rcv/core.svg?style=for-the-badge&logo=packagist)](https://packagist.org/packages/rcv/core)
 [![Total Downloads](https://img.shields.io/packagist/dt/rcv/core.svg?style=for-the-badge&logo=download)](https://packagist.org/packages/rcv/core)
 [![PHP Version](https://img.shields.io/packagist/php-v/rcv/core.svg?style=for-the-badge&logo=php)](https://packagist.org/packages/rcv/core)
-[![Laravel Version](https://img.shields.io/badge/Laravel-^9-red.svg?style=for-the-badge&logo=laravel)](https://laravel.com)
+[![Laravel Version](https://img.shields.io/badge/Laravel-9%20%7C%2010%20%7C%2011%20%7C%2012-red.svg?style=for-the-badge&logo=laravel)](https://laravel.com)
 [![License](https://img.shields.io/packagist/l/rcv/core.svg?style=for-the-badge)](https://packagist.org/packages/rcv/core)
-
-[![Tests](https://img.shields.io/github/actions/workflow/status/rcv-technologies/laravel-core/tests.yml?branch=main&style=for-the-badge&logo=github&label=Tests)](https://github.com/rcv-technologies/laravel-core/actions)
-[![Code Coverage](https://img.shields.io/codecov/c/github/rcv-technologies/laravel-core?style=for-the-badge&logo=codecov)](https://codecov.io/gh/rcv-technologies/laravel-core)
-[![Quality Score](https://img.shields.io/scrutinizer/quality/g/rcv-technologies/laravel-core?style=for-the-badge&logo=scrutinizer)](https://scrutinizer-ci.com/g/rcv-technologies/laravel-core)
 
 **🏆 Enterprise-Grade Modular Architecture for Laravel Applications**
 
@@ -28,9 +24,9 @@
 
 ---
 
-## 🌟 Why RCV Core Module?
+## 🌟 Why Laravel Core Module?
 
-RCV Core Module revolutionizes how you build Laravel applications by providing a **robust modular architecture** that scales with your business needs. Built with enterprise-level development in mind, it combines the power of **Service Repository Pattern** with **Dynamic Module Management**.
+Laravel Core Module revolutionizes Laravel application development by providing a **robust modular architecture** that scales with your business needs. Built with enterprise-level development in mind, it combines **Service Repository Pattern** with **Dynamic Module Management**.
 
 ### 🎯 Perfect For
 
@@ -48,7 +44,7 @@ RCV Core Module revolutionizes how you build Laravel applications by providing a
 
 | 🏗️ **Architecture** | 🛠️ **Development** | 🚀 **Performance** | 🔐 **Enterprise** |
 |:---:|:---:|:---:|:---:|
-| Service Repository Pattern | 20+ Artisan Commands | Dynamic Module Loading | PSR-4 Compliant |
+| Service Repository Pattern | 50+ Artisan Commands | Dynamic Module Loading | PSR-4 Compliant |
 | Interface-Based Design | Auto-Scaffolding | Lazy Loading | Dependency Injection |
 | Event-Driven Architecture | Hot Module Swapping | Optimized Autoloading | Security Best Practices |
 | Modular Routing System | Developer-Friendly CLI | Caching Strategies | Enterprise Monitoring |
@@ -100,7 +96,7 @@ graph TB
 
 | Requirement | Version | Status |
 |-------------|---------|--------|
-| **PHP** | ≥ 8 | ✅ Supported |
+| **PHP** | ≥ 8.0 | ✅ Supported |
 | **Laravel** | 9.x - 12.x | ✅ Supported |
 | **Composer** | Latest | ✅ Required |
 | **Extensions** | json, mbstring, openssl | ✅ Standard |
@@ -116,7 +112,7 @@ composer require rcv/core
 # 🔧 Publish Migration
 php artisan vendor:publish --tag=core-module-migrations
 
-# 🔧 Migrate Migration
+# 🔧 Run Migrations
 php artisan migrate
 
 # 🎯 Create your first module
@@ -124,17 +120,16 @@ php artisan module:make UserManagement
 
 # 🎯 Install your first module
 php artisan module:marketplace install UserManagement
-
 ```
 
 ---
 
-## 🏗️ Module Structure Deep Dive
+## 🏗️ Module Structure
 
-Our modular architecture follows a **clean, organized structure** that promotes maintainability and scalability:
+Our modular architecture follows a clean, organized structure that promotes maintainability and scalability:
 
 ```
-📁 modules/
+📁 Modules/
 └── 📁 UserManagement/
     ├── 📄 module.json                    # Module configuration
     ├── 📄 composer.json                  # Dependencies
@@ -186,9 +181,9 @@ Our modular architecture follows a **clean, organized structure** that promotes 
     │   │   ├── 📄 RouteServiceProvider.php
     │   │   └── 📄 EventServiceProvider.php
     │   ├── 📁 Repositories/
-    │   ├── └── 📁 Interfaces/
-    │   │   └── ├── 📄 UserRepositoryInterface.php
-    │   │   └── └── 📄 UserServiceInterface.php
+    │   │   ├── 📁 Interfaces/
+    │   │   │   ├── 📄 UserRepositoryInterface.php
+    │   │   │   └── 📄 UserServiceInterface.php
     │   │   ├── 📄 UserRepository.php     # Data access layer
     │   │   └── 📄 UserProfileRepository.php
     │   ├── 📁 Resources/
@@ -220,14 +215,13 @@ Our modular architecture follows a **clean, organized structure** that promotes 
     └── 📁 docs/
         ├── 📄 README.md                  # Module documentation
         └── 📄 CHANGELOG.md               # Version history
-
 ```
 
 ---
 
 ## 🎯 Service Repository Pattern Implementation
 
-### 🔧 Repository Layer
+### Repository Layer
 
 ```php
 <?php
@@ -264,34 +258,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 }
 ```
 
-
-## 🛠 DevOps Assets Publisher
-
-The package includes a built-in command to **bootstrap Docker and DevOps configuration files** for your Laravel modules.  
-This helps developers and teams quickly spin up containerized environments with **Docker, Nginx, Supervisord, and PHP customizations**.  
-
----
-
-### 📌 Command
-
-```bash
-php artisan module:devops:publish
-
-```
-## 🎯 Why This Is Useful?
-
-Quick Setup → No need to manually create Docker and K8s configs.
-
-Consistency → Standardized setup across all environments (local, staging, production).
-
-Extensible → Published stubs can be customized per project needs.
-
-CI/CD Ready → Prepares the foundation for GitHub Actions or other pipelines.
-
-### 🛠️ Service Layer
+### Service Layer
 
 ```php
-
 <?php
 
 namespace Modules\UserManagement\Services;
@@ -333,336 +302,516 @@ class UserService extends BaseService
 
 ## 🚀 Comprehensive Command Suite
 
-Laravel Core Module provides **20+ Artisan commands** for efficient development:
+Laravel Core Module provides **50+ Artisan commands** organized into logical categories for efficient development:
 
-### 📦 Module Management Commands
+## 📋 Command Categories Overview
+
+| Category | Commands | Purpose |
+|----------|----------|---------|
+| **Module Management** | 15 commands | Creating, managing, and maintaining modules |
+| **Code Generation** | 25 commands | Generating module components and classes |
+| **Database Operations** | 6 commands | Managing migrations, seeds, and database operations |
+| **Development Tools** | 8 commands | Analysis, debugging, and development utilities |
+| **DevOps & Deployment** | 3 commands | Docker, CI/CD, and deployment configurations |
+
+---
+
+## 📦 Module Management Commands
+
+### Core Module Operations
 
 ```bash
 # 🏗️ Module Creation & Structure
-php artisan module:make {name}                    # Create new module
+php artisan module:make {name}                    # Create new module with complete structure
+php artisan module:setup                          # Set up folder structure for modules
 
 # 🔧 Module State Management
 php artisan module:enable {name}                  # Enable specific module
-php artisan module:disable {name}                 # Disable specific module
+php artisan module:disable {name} [options]       # Disable module (safe/destructive options)
+php artisan module:use {name}                     # Set active module for CLI session
+php artisan module:unuse                          # Unset active module
 
-# 📋 Module Information
-php artisan module:marketplace list               # List all modules with status
-
-### `module:analyze`
-
-Analyze module dependencies, detect issues, and optionally export in different formats.
-
-**Usage:**
-
-```bash
-php artisan module:analyze [--format=table|json|dot]
-
-# Default analysis in table format
-php artisan module:analyze
-
-# Export to JSON
-php artisan module:analyze --format=json > graph.json
-
-# Generate a dependency graph image (requires Graphviz)
-php artisan module:analyze --format=dot > graph.dot
-dot -Tpng graph.dot -o graph.png
-
-### Output (table format):
-Modules: 5 | Relations: 4
-Issues detected:
-- Module [Blog] requires [UserManagement] which is disabled
-
-+------------------+---------+---------+
-| Module           | Enabled | Version |
-+------------------+---------+---------+
-| Blog             | yes     | 1.0.0   |
-| UserManagement   | no      | 1.2.1   |
-| Analytics        | yes     | 0.9.0   |
-+------------------+---------+---------+
-
-
-# 🗂️ Module Lifecycle
-php artisan module:marketplace install {name}     # Install module dependencies
-php artisan module:marketplace remove {name}      # Uninstall module
-php artisan module:marketplace update {name}      # Update module
-php artisan module:publish {name}                 # Publish module assets
+# 📋 Module Information & Discovery
+php artisan module:state                          # Show module states from database
+php artisan module:discover                       # Compile class that registers all modules
+php artisan module:commands                       # Interactive module command explorer
 ```
 
-### 🏗️ Component Generation Commands
+**Use Cases:**
+- **module:make** - Bootstrap a new feature module with complete folder structure
+- **module:enable/disable** - Safely activate/deactivate modules in production
+- **module:use** - Work on specific module during development session
+
+### Module Marketplace & Distribution
 
 ```bash
-# 🎮 Controllers
-php artisan module:make-controller {name} {module}       # Create controller
-php artisan module:make-controller {name} {module} --resource # Create resource controller
+# 🛍️ Module Marketplace Operations
+php artisan module:marketplace list               # List all available modules with status
+php artisan module:marketplace install {name}     # Install module with dependencies
+php artisan module:marketplace remove {name}      # Safely remove module
+php artisan module:marketplace update {name}      # Update module to latest version
 
-# 🗃️ Models & Database
-php artisan module:make-model {name} {module}            # Create model
+# 📦 Module Publishing & Distribution
+php artisan module:publish-config {name}          # Publish module config to app
+php artisan module:publish-migration {name}       # Publish module migrations
+php artisan module:publish-translation {name}     # Publish module translations
+```
 
-php artisan module:make-migration {name} {module}        # Create migration
+**Use Cases:**
+- **marketplace:install** - Add third-party modules or install dependencies
+- **publish-config** - Customize module configuration in main application
 
-#e.g - 
+---
 
-# Create a clients table in UserManagement with custom fields
-php artisan module:make-migration create_clients_table UserManagement
+## 🏗️ Code Generation Commands
 
-# Create a clients table in UserManagement with custom fields
-php artisan module:make-migration create_clients_table UserManagement --fields="name:string,email:string,phone:string"
+### Controllers & HTTP Components
 
-# Add a column (e.g. status) to clients table
-php artisan module:make-migration add_status_to_clients_table UserManagement --fields="status:string"
-
-# Delete a column (e.g. phone) from clients table
-php artisan module:make-migration delete_phone_from_clients_table UserManagement --fields="phone:string"
-
-# Drop the clients table
-php artisan module:make-migration drop_clients_table UserManagement
-
-
-
-php artisan module:make-seeder {name} {module}           # Create seeder
-php artisan module:make-factory {name} {module}          # Create factory
-
-# 🔧 Services & Repositories
-php artisan module:make-service {name} {module}          # Create service class
-php artisan module:make-repository {name} {module}       # Create repository
+```bash
+# 🎮 Controller Generation
+php artisan module:make-controller {name} {module}              # Basic controller
+php artisan module:make-controller {name} {module} --resource   # Resource controller with CRUD
+php artisan module:make-controller {name} {module} --api        # API controller
 
 # 🌐 HTTP Components
-php artisan module:make-request {name} {module}          # Create form request
-php artisan module:make-resource {name} {module}         # Create API resource
-php artisan module:make-middleware {name} {module}       # Create middleware
-
-# 📧 Events & Notifications
-php artisan module:make-event {name} {module}                   # Create event
-php artisan module:make-listener {name} {eventName} {module}    # Create listener
-php artisan module:make-notification {name} {module}            # Create notification
-php artisan module:make-job {name} {module}                     # Create job
-
-# 🔐 Authorization
-php artisan module:make-policy {name} {module}           # Create policy
-php artisan module:make-rule {name} {module}             # Create validation rule
-
-# 📦 Providers
-php artisan module:make-provider {name} {module}         # Create service provider
+php artisan module:make-request {name} {module}                 # Form request validation
+php artisan module:make-resource {name} {module}                # API resource transformation
+php artisan module:make-middleware {name} {module}              # Custom middleware
 ```
 
-### 🛠️ Development & Maintenance Commands
+**Use Cases:**
+- **make-controller --resource** - Quickly scaffold CRUD operations
+- **make-request** - Centralized validation logic for forms
+- **make-middleware** - Module-specific authentication or filtering
+
+### Models & Database Components
 
 ```bash
-# 🔄 Module Operations
-php artisan module:migrate {name}                        # Run module migrations
-php artisan module:migrate-rollback {name}               # Rollback module migrations
-php artisan module:seed {name}                           # Run module seeders
-php artisan module:route-list {name}                     # List module routes
+# 🗃️ Database Structure
+php artisan module:make-model {name} {module}                   # Eloquent model
+php artisan module:make-migration {name} {module} [options]     # Database migration
+php artisan module:make-seeder {name} {module}                  # Database seeder
+php artisan module:make-factory {name} {module}                 # Model factory for testing
 
-### Module Profiler
-
-php artisan module:profile --duration=5                  # Run a simple module profiling command to test the metrics system:
-
-
+# Advanced Migration Options
+php artisan module:make-migration create_users_table {module} --fields="name:string,email:string"
+php artisan module:make-migration add_status_to_users_table {module} --fields="status:enum:active,inactive"
+php artisan module:make-migration drop_users_table {module}
 ```
 
+**Use Cases:**
+- **make-model** - Create domain entities for your module
+- **make-migration --fields** - Rapidly prototype database schema
+- **make-factory** - Generate test data for development
 
-### 🛠️ Available Commands
-
-#### Module Management
-- `module:make` - Create a new module
-- `module:enable` - Enable a module
-- `module:disable` - Disable a module
-- `module:marketplace list` - List all modules
-- `module:marketplace install` - Install a module
-- `module:marketplace remove` - Uninstall a module
-- `module:marketplace update` - Update a module
-- `module:state` - Check module state
-- `module:debug` - Debug module information
-- `module:dependency-graph` - Generate module dependency graph
-- `module:health-check` - Check module health
-- `module:autoload` - Regenerate module autoload files
-- `module:backup` - Backup module files
-- `module:clear-compiled` - Clear compiled module files
-- `module:discover` - Discover modules in the application
-- `module:migrate-v1-to-v2` - Migrate V1 modules to V2 format
-
-#### Module Generation
-- `module:make-controller` - Create a new controller
-- `module:make-model` - Create a new model
-- `module:make-migration` - Create a new migration
-- `module:make-seeder` - Create a new seeder
-- `module:make-service` - Create a new service
-- `module:make-repository` - Create a new repository
-- `module:make-resource` - Create a new resource
-- `module:make-route-provider` - Create a new route provider
-- `module:make-view` - Create a new view
-- `module:make-middleware` - Create a new middleware
-- `module:make-helper` - Create a new helper
-- `module:make-listener` - Create a new event listener
-- `module:make-scope` - Create a new model scope
-- `module:make-event` - Create a new event
-- `module:make-exception` - Create a new exception
-- `module:make-policy` - Create a new policy
-- `module:make-request` - Create a new form request
-- `module:make-rule` - Create a new validation rule
-- `module:make-action` - Create a new action
-- `module:make-cast` - Create a new cast
-- `module:make-channel` - Create a new channel
-- `module:make-component-view` - Create a new component view
-- `module:make-enum` - Create a new enum
-- `module:make-interface` - Create a new interface
-- `module:make-job` - Create a new job
-- `module:make-mail` - Create a new mail
-- `module:make-artisan` - Create a new artisan command
-- `module:make-class` - Create a new class
-- `module:make-command` - Create a new command
-- `module:make-component` - Create a new component
-- `module:make-notification` - Create a new notification
-- `module:make-observer` - Create a new observer
-
-### 🔤 Module Translation Check Command
-
-The `module:lang` command validates **translation files and keys** across multiple locales inside a module.  
-It ensures consistency and helps catch missing translations before production.
-
-#### Usage
+### Business Logic Components
 
 ```bash
-# Basic usage
-php artisan module:lang UserManagement
+# 🔧 Business Logic Layer
+php artisan module:make-service {name} {module}                 # Service class for business logic
+php artisan module:make-repository {name} {module}              # Repository for data access
+php artisan module:make-interface {name} {module}               # Contract interfaces
 
-# Fill missing keys with placeholder
-php artisan module:lang UserManagement --placeholder="__MISSING__"
-
-# Copy missing keys from fallback locale
-php artisan module:lang UserManagement --fallback=en
-
+# 🎭 Design Patterns
+php artisan module:make-action {name} {module}                  # Single-purpose action class
+php artisan module:make-cast {name} {module}                    # Custom Eloquent cast
+php artisan module:make-trait {name} {module}                   # Reusable trait
+php artisan module:make-enum {name} {module}                    # PHP enum class
 ```
-### 🧭 `module:commands`
 
-A **user-friendly interactive explorer** for all available module commands.  
-Instead of memorizing command names, you can navigate through categories and sub-categories with a simple numeric selection.
+**Use Cases:**
+- **make-service** - Encapsulate complex business logic
+- **make-repository** - Abstract database operations
+- **make-action** - Single responsibility principle implementation
 
-
-#### ✅ Usage
+### Event-Driven Components
 
 ```bash
+# 📧 Event System
+php artisan module:make-event {name} {module}                   # Domain event
+php artisan module:make-listener {name} {eventName} {module}    # Event listener
+php artisan module:make-observer {name} {module}                # Model observer
 
-php artisan module:commands
-
+# 🔔 Communication
+php artisan module:make-notification {name} {module}            # User notification
+php artisan module:make-mail {name} {module}                    # Email template
+php artisan module:make-job {name} {module}                     # Background job
 ```
 
-### 🔧 `module:disable`
+**Use Cases:**
+- **make-event/listener** - Decouple modules through events
+- **make-job** - Handle time-intensive operations asynchronously
+- **make-observer** - Respond to model lifecycle events
 
-Disable one or more modules in a **safe, production-ready way**.  
+### Authorization & Security
 
-By default this command **only disables** the module (marks it inactive in `module_states` and `module.json`) without touching database tables or deleting files.  
-Destructive actions (rollback migrations, remove module files) require explicit flags.
+```bash
+# 🔐 Security Components
+php artisan module:make-policy {name} {module}                  # Authorization policy
+php artisan module:make-rule {name} {module}                    # Custom validation rule
+php artisan module:make-exception {name} {module}               # Custom exception handling
+
+# 📞 Communication Channels
+php artisan module:make-channel {name} {module}                 # Broadcasting channel
+```
+
+**Use Cases:**
+- **make-policy** - Define authorization rules for resources
+- **make-rule** - Create reusable validation logic
+- **make-exception** - Handle domain-specific errors
+
+### Utilities & Helpers
+
+```bash
+# 🛠️ Utility Components
+php artisan module:make-helper {name} {module}                  # Helper functions
+php artisan module:make-command {name} {module}                 # Custom Artisan command
+php artisan module:make-class {name} {module}                   # Generic class from stub
+php artisan module:make-scope {name} {module}                   # Eloquent query scope
+
+# 🎨 Frontend Components
+php artisan module:make-component {name} {module}               # Blade component
+php artisan module:make-view {name} {module}                    # Blade view file
+```
+
+**Use Cases:**
+- **make-helper** - Module-specific utility functions
+- **make-command** - Custom CLI tools for your module
+- **make-component** - Reusable UI components
+
+### Providers & Configuration
+
+```bash
+# ⚙️ Module Infrastructure
+php artisan module:make-route-provider {name} {module}          # Route service provider
+php artisan module:make-event-provider {name} {module}          # Event service provider
+```
+
+**Use Cases:**
+- **make-route-provider** - Custom routing logic for modules
+- **make-event-provider** - Module-specific event bindings
 
 ---
 
+## 🗄️ Database Operations Commands
 
-
-### ✅ Usage
+### Migration Management
 
 ```bash
-php artisan module:disable {module*} [options]
-
+# 🔄 Migration Operations
+php artisan module:migrate [module]                    # Run all or specific module migrations
+php artisan module:migrate-one {file} {module}         # Run specific migration file
+php artisan module:migrate-fresh                       # Drop all tables and re-migrate
+php artisan module:migrate-refresh                     # Rollback and re-run migrations
+php artisan module:migrate-rollback [module]           # Rollback module migrations
+php artisan module:migrate-reset                       # Reset all module migrations
+php artisan module:migrate-status                      # Show migration status
 ```
-⚙️ Options
-Option	        Description
 
---force	        Force disable even if other modules depend on this one. Skips dependency locking     and   prompts.
+### Database Seeding
 
---remove	    Destructive: Remove the module completely (delete files, unregister from config/composer, remove DB state).
+```bash
+# 🌱 Data Seeding
+php artisan module:seed {module}                       # Run module seeders
+php artisan module:seeder-list                         # List all available seeders
+```
 
---rollback	    Destructive: Rollback the module's migrations. Uses migration history in module_states.
-
---dry-run	    Show what actions would be performed without actually making changes.
-
---no-autoload	Skip running composer dump-autoload after the operation (useful for CI or batch runs).
-
-
-#### Module Testing
-- `module:update-phpunit-coverage` - Update PHPUnit coverage configuration
+**Use Cases:**
+- **migrate-fresh** - Clean development environment setup
+- **migrate-status** - Check which migrations have run
+- **seed** - Populate development/testing data
 
 ---
 
-## 💡 Advanced Usage Examples
+## 🔧 Development Tools Commands
 
-### 🔗 Module Dependencies
+### Analysis & Debugging
 
-Define module dependencies in `module.json`:
-
-```json
-{
-    "name": "UserManagement",
-    "alias": "usermanagement",
-    "description": "Complete user management system",
-    "keywords": ["user", "management", "authentication"],
-    "version": "1.0.0",
-    "priority": 1,
-    "providers": [
-        "Modules\\UserManagement\\Providers\\UserServiceProvider"
-    ],
-    "dependencies": {
-        "Core": "^1.0",
-        "Notification": "^1.0"
-    },
-    "aliases": {},
-    "files": [],
-    "requires": []
-}
+```bash
+# 🔍 Module Analysis
+php artisan module:analyze [--format=table|json|dot]   # Analyze dependencies and conflicts
+php artisan module:dependency-graph                    # Generate visual dependency graph
+php artisan module:debug {module}                      # Debug module state and configuration
+php artisan module:health                              # Check module health status
 ```
 
-### 🔄 Event-Driven Communication
+**Analysis Command Examples:**
+```bash
+# Generate dependency analysis table
+php artisan module:analyze
+
+# Export to JSON for CI/CD pipeline
+php artisan module:analyze --format=json > analysis.json
+
+# Create dependency graph image
+php artisan module:analyze --format=dot > graph.dot
+dot -Tpng graph.dot -o dependencies.png
+```
+
+### Translation & Localization
+
+```bash
+# 🔤 Language Management
+php artisan module:lang {module}                       # Validate translation files
+php artisan module:lang {module} --placeholder="__MISSING__"   # Fill missing keys
+php artisan module:lang {module} --fallback=en         # Copy from fallback locale
+```
+
+### Performance & Maintenance
+
+```bash
+# 🚀 Performance Tools
+php artisan module:profile --duration=5                # Profile module performance
+php artisan module:autoload                            # Update module autoload configuration
+php artisan module:clear-compiled                      # Clear compiled module files
+php artisan module:update-phpunit-coverage             # Update PHPUnit coverage config
+php artisan module:prune                               # Remove unused models
+```
+
+**Use Cases:**
+- **analyze** - Identify circular dependencies before deployment
+- **health** - Automated module health checks in CI/CD
+- **lang** - Ensure translation completeness
+
+---
+
+## 🐳 DevOps & Deployment Commands
+
+### Infrastructure as Code
+
+```bash
+# 🐳 DevOps Asset Generation
+php artisan module:devops:publish                      # Generate Docker, CI/CD configs
+php artisan module:backup                              # Create module backups
+php artisan module:check-updates                       # Check for available updates
+```
+
+**DevOps Publisher Features:**
+- **Docker Configuration** - Dockerfile, docker-compose.yml
+- **Nginx Configuration** - Optimized web server setup
+- **Supervisord** - Process management for queues
+- **GitHub Actions** - CI/CD pipeline templates
+- **Kubernetes** - K8s deployment manifests
+
+### Version Management
+
+```bash
+# 📈 Upgrade & Migration
+php artisan module:upgrade {module} {version}          # Upgrade module to specific version
+php artisan module:v2:migrate                          # Migrate v1 modules to v2 structure
+```
+
+**Use Cases:**
+- **devops:publish** - Bootstrap containerized development environment
+- **upgrade** - Safely update modules with compatibility checks
+- **backup** - Create restore points before major changes
+
+---
+
+## 🎯 Command Usage Examples
+
+### Starting a New Module
+
+```bash
+# Create a complete e-commerce module
+php artisan module:make Ecommerce
+
+# Generate core components
+php artisan module:make-model Product Ecommerce
+php artisan module:make-controller ProductController Ecommerce --resource
+php artisan module:make-service ProductService Ecommerce
+php artisan module:make-repository ProductRepository Ecommerce
+
+# Add business logic
+php artisan module:make-event ProductCreated Ecommerce
+php artisan module:make-listener SendProductNotification ProductCreated Ecommerce
+php artisan module:make-job ProcessProductImages Ecommerce
+
+# Create API resources
+php artisan module:make-resource ProductResource Ecommerce
+php artisan module:make-request CreateProductRequest Ecommerce
+```
+
+### Managing Module Dependencies
+
+```bash
+# Check module health and dependencies
+php artisan module:analyze
+php artisan module:health
+
+# Enable modules in correct order
+php artisan module:enable Core
+php artisan module:enable Authentication  
+php artisan module:enable Ecommerce
+
+# Install marketplace modules
+php artisan module:marketplace install PaymentGateway
+```
+
+### Database Operations Workflow
+
+```bash
+# Create and run migrations
+php artisan module:make-migration create_products_table Ecommerce --fields="name:string,price:decimal,description:text"
+php artisan module:migrate Ecommerce
+
+# Create seeders and factories
+php artisan module:make-factory ProductFactory Ecommerce
+php artisan module:make-seeder ProductSeeder Ecommerce
+php artisan module:seed Ecommerce
+```
+
+---
+
+## 📊 Performance & Optimization
+
+### Performance Features
+
+- **Lazy Loading** - Modules load only when needed
+- **Caching** - Intelligent caching of module configurations  
+- **Autoloading** - PSR-4 compliant autoloading
+- **Route Caching** - Optimized route registration
+- **Asset Compilation** - Efficient asset management
+
+### Benchmarks
+
+| Feature | Traditional Laravel | With Laravel Core Module | Improvement |
+|---------|-------------------|-------------------------|-------------|
+| Boot Time | 150ms | 95ms | 🚀 37% faster |
+| Memory Usage | 45MB | 32MB | 🚀 29% less |
+| Route Registration | 50ms | 15ms | 🚀 70% faster |
+| Asset Loading | 200ms | 85ms | 🚀 58% faster |
+
+---
+
+## 🔐 Security Features
+
+### Built-in Security
+
+- **Input Validation** - Comprehensive request validation
+- **Authorization** - Policy-based authorization  
+- **CSRF Protection** - Automatic CSRF token handling
+- **SQL Injection** - Eloquent ORM protection
+- **XSS Prevention** - Blade template escaping
+
+### Security Best Practices
 
 ```php
 <?php
 
-// Module A fires an event
-event(new UserCreated($user));
-
-// Module B listens to the event
-class SendWelcomeEmail
+// Automatic input sanitization in requests
+class CreateUserRequest extends FormRequest
 {
-    public function handle(UserCreated $event)
-    {
-        // Send welcome email logic
-        Mail::to($event->user->email)->send(new WelcomeEmail($event->user));
-    }
-}
-```
-
-### 🌐 API Resource Integration
-
-```php
-<?php
-
-namespace Modules\UserManagement\Http\Resources;
-
-use Illuminate\Http\Resources\Json\JsonResource;
-
-class UserResource extends JsonResource
-{
-    public function toArray($request)
+    public function rules()
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'profile' => new UserProfileResource($this->whenLoaded('profile')),
-            'permissions' => $this->when($this->relationLoaded('permissions'), 
-                fn() => $this->permissions->pluck('name')
-            ),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'name' => 'required|string|max:255|regex:/^[a-zA-Z\s]+$/',
+            'email' => 'required|email|unique:users,email|max:255',
+            'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/',
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'name' => strip_tags($this->name),
+            'email' => filter_var($this->email, FILTER_SANITIZE_EMAIL),
+        ]);
     }
 }
 ```
 
 ---
 
-## 🔧 Configuration Options
+## 🧪 Testing Your Modules
 
-### Core Configuration (`config/core.php`)
+### Unit Testing Example
+
+```php
+<?php
+
+namespace Modules\UserManagement\Tests\Unit;
+
+use Modules\UserManagement\Services\UserService;
+use Modules\UserManagement\Repositories\UserRepository;
+use RCV\Core\Tests\TestCase;
+
+class UserServiceTest extends TestCase
+{
+    protected $userService;
+    protected $userRepository;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->userRepository = $this->mock(UserRepository::class);
+        $this->userService = new UserService($this->userRepository);
+    }
+
+    public function test_can_create_user()
+    {
+        $userData = [
+            'user' => ['name' => 'John Doe', 'email' => 'john@example.com'],
+            'profile' => ['phone' => '123-456-7890']
+        ];
+
+        $this->userRepository
+            ->shouldReceive('createWithProfile')
+            ->once()
+            ->andReturn(new User($userData['user']));
+
+        $user = $this->userService->createUser($userData);
+
+        $this->assertInstanceOf(User::class, $user);
+    }
+}
+```
+
+### Feature Testing Example
+
+```php
+<?php
+
+namespace Modules\UserManagement\Tests\Feature;
+
+use RCV\Core\Tests\TestCase;
+
+class UserControllerTest extends TestCase
+{
+    public function test_can_create_user_via_api()
+    {
+        $userData = [
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+            'password' => 'password123',
+            'password_confirmation' => 'password123'
+        ];
+
+        $response = $this->postJson('/api/users', $userData);
+
+        $response->assertStatus(201)
+                ->assertJsonStructure([
+                    'data' => [
+                        'id',
+                        'name', 
+                        'email',
+                        'created_at'
+                    ]
+                ]);
+
+        $this->assertDatabaseHas('users', [
+            'email' => 'john@example.com'
+        ]);
+    }
+}
+```
+
+---
+
+## ⚙️ Configuration
+
+### Core Configuration
 
 ```php
 <?php
@@ -696,8 +845,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'paths' => [
-        'modules' => base_path('modules'),
-        'assets' => public_path('modules'),
+        'modules' => base_path('Modules'),
+        'assets' => public_path('Modules'),
         'migration' => base_path('database/migrations'),
         'generator' => [
             'config' => ['path' => 'Config', 'generate' => true],
@@ -775,247 +924,125 @@ return [
 
 ---
 
-## 🧪 Testing Your Modules
+## 💡 Advanced Usage Examples
 
-### Unit Testing
+### Module Dependencies
+
+Define module dependencies in `module.json`:
+
+```json
+{
+    "name": "UserManagement",
+    "alias": "usermanagement",
+    "description": "Complete user management system",
+    "keywords": ["user", "management", "authentication"],
+    "version": "1.0.0",
+    "priority": 1,
+    "providers": [
+        "Modules\\UserManagement\\Providers\\UserServiceProvider"
+    ],
+    "dependencies": {
+        "Core": "^1.0",
+        "Notification": "^1.0"
+    },
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
+```
+
+### Event-Driven Communication
 
 ```php
 <?php
 
-namespace Modules\UserManagement\Tests\Unit;
+// Module A fires an event
+event(new UserCreated($user));
 
-use Modules\UserManagement\Services\UserService;
-use Modules\UserManagement\Repositories\UserRepository;
-use RCV\Core\Tests\TestCase;
-
-class UserServiceTest extends TestCase
+// Module B listens to the event
+class SendWelcomeEmail
 {
-    protected $userService;
-    protected $userRepository;
-
-    public function setUp(): void
+    public function handle(UserCreated $event)
     {
-        parent::setUp();
-        
-        $this->userRepository = $this->mock(UserRepository::class);
-        $this->userService = new UserService($this->userRepository);
-    }
-
-    public function test_can_create_user()
-    {
-        $userData = [
-            'user' => ['name' => 'John Doe', 'email' => 'john@example.com'],
-            'profile' => ['phone' => '123-456-7890']
-        ];
-
-        $this->userRepository
-            ->shouldReceive('createWithProfile')
-            ->once()
-            ->andReturn(new User($userData['user']));
-
-        $user = $this->userService->createUser($userData);
-
-        $this->assertInstanceOf(User::class, $user);
+        // Send welcome email logic
+        Mail::to($event->user->email)->send(new WelcomeEmail($event->user));
     }
 }
 ```
 
-### Feature Testing
+### API Resource Integration
 
 ```php
 <?php
 
-namespace Modules\UserManagement\Tests\Feature;
+namespace Modules\UserManagement\Http\Resources;
 
-use RCV\Core\Tests\TestCase;
-use Modules\UserManagement\Models\User;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserControllerTest extends TestCase
+class UserResource extends JsonResource
 {
-    public function test_can_create_user_via_api()
-    {
-        $userData = [
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
-            'password' => 'password123',
-            'password_confirmation' => 'password123'
-        ];
-
-        $response = $this->postJson('/api/users', $userData);
-
-        $response->assertStatus(201)
-                ->assertJsonStructure([
-                    'data' => [
-                        'id',
-                        'name',
-                        'email',
-                        'created_at'
-                    ]
-                ]);
-
-        $this->assertDatabaseHas('users', [
-            'email' => 'john@example.com'
-        ]);
-    }
-}
-```
-
----
-
-## 📊 Performance & Optimization
-
-### 🚀 Performance Features
-
-- **Lazy Loading**: Modules load only when needed
-- **Caching**: Intelligent caching of module configurations
-- **Autoloading**: PSR-4 compliant autoloading
-- **Route Caching**: Optimized route registration
-- **Asset Compilation**: Efficient asset management
-
-### 📈 Benchmarks
-
-| Feature | Traditional Laravel | With Laravel Core Module | Improvement |
-|---------|-------------------|-------------------------|-------------|
-| Boot Time | 150ms | 95ms | 🚀 37% faster |
-| Memory Usage | 45MB | 32MB | 🚀 29% less |
-| Route Registration | 50ms | 15ms | 🚀 70% faster |
-| Asset Loading | 200ms | 85ms | 🚀 58% faster |
-
----
-
-## 🔐 Security Features
-
-### 🛡️ Built-in Security
-
-- **Input Validation**: Comprehensive request validation
-- **Authorization**: Policy-based authorization
-- **CSRF Protection**: Automatic CSRF token handling
-- **SQL Injection**: Eloquent ORM protection
-- **XSS Prevention**: Blade template escaping
-
-### 🔒 Security Best Practices
-
-```php
-<?php
-
-// Automatic input sanitization
-class CreateUserRequest extends FormRequest
-{
-    public function rules()
+    public function toArray($request)
     {
         return [
-            'name' => 'required|string|max:255|regex:/^[a-zA-Z\s]+$/',
-            'email' => 'required|email|unique:users,email|max:255',
-            'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/',
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'profile' => new UserProfileResource($this->whenLoaded('profile')),
+            'permissions' => $this->when($this->relationLoaded('permissions'), 
+                fn() => $this->permissions->pluck('name')
+            ),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
-    }
-
-    public function sanitize()
-    {
-        $input = $this->all();
-        $input['name'] = strip_tags($input['name']);
-        $input['email'] = filter_var($input['email'], FILTER_SANITIZE_EMAIL);
-        
-        $this->replace($input);
     }
 }
 ```
 
 ---
 
-## 🤝 Contributing
+## 📊 Monitoring & Analytics
 
-We welcome contributions from the community! Here's how you can help:
+### Performance Monitoring
 
-### 🌟 Ways to Contribute
+```php
+<?php
 
-- 🐛 **Bug Reports**: Found a bug? [Create an issue](https://github.com/rcv-technologies/laravel-core/issues)
-- 💡 **Feature Requests**: Have an idea? [Start a discussion](https://github.com/rcv-technologies/laravel-core/discussions)
-- 📝 **Documentation**: Improve our docs
-- 🧪 **Testing**: Add test cases
-- 💻 **Code**: Submit pull requests
+use RCV\Core\Facades\ModuleMetrics;
 
-### 🔄 Development Workflow
+// Track module performance
+ModuleMetrics::startTimer('user-creation');
+$user = $this->userService->createUser($data);
+ModuleMetrics::endTimer('user-creation');
 
-```bash
-# 1. Fork the repository
-git clone https://github.com/Rishabh6688/core.git
+// Log module events
+ModuleMetrics::increment('users.created');
+ModuleMetrics::gauge('users.active', $activeUserCount);
 
-# 2. Create a feature branch
-git checkout -b feature/amazing-feature
-
-# 3. Make your changes
-# ... code changes ...
-
-# 4. Stage changes
-git add .
-
-# 5. Commit and push
-git commit -m "Add amazing feature"
-git push origin feature/amazing-feature
-
-# 6. Create a Pull Request
+// Custom metrics
+ModuleMetrics::histogram('api.response_time', $responseTime);
 ```
 
-### 📋 Development Guidelines
+### Analytics Dashboard Features
 
-- Follow **PSR-12** coding standards
-- Write **comprehensive tests**
-- Update **documentation**
-- Use **conventional commits**
-- Ensure **backward compatibility**
+- Performance Metrics - Track module execution times and resource usage
+- Error Tracking - Monitor and log module-specific errors
+- Usage Statistics - Analyze module adoption and feature usage
+- Performance Bottlenecks - Identify slow queries and operations
+- Real-time Monitoring - Live dashboards for production monitoring
 
 ---
 
-## 💪 Enterprise Success Stories
+## 🎓 Best Practices & Guidelines
 
-<div align="center">
+### Module Design Principles
 
-### 🏢 Trusted by Leading Organizations
-
-| Company | Industry | Modules Used | Performance Gain |
-|---------|----------|--------------|------------------|
-| **RCV Technologies** | SaaS | 25+ modules | 🚀 40% faster development |
-
-*"Core Module transformed our development process. We reduced our time-to-market by 40% and improved code maintainability significantly."* - **CTO, RCV Technologies**
-
-</div>
-
----
-
-## 🎓 Learning Resources
-
-### 📚 Documentation & Guides
-
-- 📖 [**Official Documentation**](https://const-ant-laravel-corex-docs.vercel.app/) - Comprehensive guides
-- 🎥 [**Video Tutorials**](https://youtube.com/rcvtechnologies) - Step-by-step tutorials
-- 📝 [**Blog Posts**](https://blog.rcvtechnologies.com) - Best practices and tips
-- 💬 [**Community Forum**](https://github.com/rcv-technologies/laravel-core/discussions) - Get help from experts
-
-### 🛠️ Example Projects
-
-```bash
-# Clone example projects
-git clone https://github.com/rcv-technologies/laravel-core-examples.git
-
-# Available examples:
-# 1. E-commerce Platform (15 modules)
-# 2. CMS System (10 modules)
-# 3. API Gateway (8 modules)
-# 4. Multi-tenant SaaS (20 modules)
-```
-
-### 🎯 Best Practices Guide
-
-#### 📋 Module Design Principles
-
-1. **Single Responsibility** - Each module should have one clear purpose
-2. **Loose Coupling** - Minimize dependencies between modules
-3. **High Cohesion** - Related functionality should be grouped together
+1. **Single Responsibility** - Each module should have one clear business purpose
+2. **Loose Coupling** - Minimize direct dependencies between modules
+3. **High Cohesion** - Group related functionality together
 4. **Interface Segregation** - Use specific interfaces rather than large ones
-5. **Dependency Inversion** - Depend on abstractions, not concretions
+5. **Dependency Inversion** - Depend on abstractions, not concrete implementations
 
-#### 🔧 Development Workflow
+### Development Workflow
 
 ```mermaid
 graph LR
@@ -1037,20 +1064,7 @@ graph LR
     style H fill:#e8eaf6
 ```
 
----
-
-## 🛡️ Security & Compliance
-
-### 🔒 Security Standards
-
-Laravel Core Module follows industry-standard security practices:
-
-- **OWASP Top 10** compliance
-- **CVE monitoring** and rapid patching
-- **Security audits** by third-party experts
-- **Penetration testing** for critical features
-
-### 📋 Compliance Features
+### Security Best Practices
 
 ```php
 <?php
@@ -1078,211 +1092,127 @@ class UserController extends Controller
 }
 ```
 
-### 🔐 Security Configuration
+---
 
-```php
-<?php
+## 🤝 Contributing
 
-// Security middleware configuration
-return [
-    'security' => [
-        'csrf' => true,
-        'rate_limiting' => [
-            'enabled' => true,
-            'max_attempts' => 60,
-            'decay_minutes' => 1,
-        ],
-        'encryption' => [
-            'driver' => 'aes-256-cbc',
-            'key' => env('APP_KEY'),
-        ],
-        'headers' => [
-            'x-frame-options' => 'DENY',
-            'x-content-type-options' => 'nosniff',
-            'x-xss-protection' => '1; mode=block',
-            'strict-transport-security' => 'max-age=31536000; includeSubDomains',
-        ],
-    ],
-];
+We welcome contributions from the community! Here's how you can help:
+
+### Ways to Contribute
+
+- **Bug Reports** - Found a bug? [Create an issue](https://github.com/rcv-technologies/laravel-core/issues)
+- **Feature Requests** - Have an idea? [Start a discussion](https://github.com/rcv-technologies/laravel-core/discussions)
+- **Documentation** - Improve our docs
+- **Testing** - Add test cases
+- **Code** - Submit pull requests
+
+### Development Workflow
+
+```bash
+# 1. Fork the repository
+git clone https://github.com/rcv-technologies/laravel-core.git
+
+# 2. Create a feature branch
+git checkout -b feature/amazing-feature
+
+# 3. Make your changes
+# ... code changes ...
+
+# 4. Run tests
+composer test
+
+# 5. Commit and push
+git add .
+git commit -m "Add amazing feature"
+git push origin feature/amazing-feature
+
+# 6. Create a Pull Request
+```
+
+### Development Guidelines
+
+- Follow **PSR-12** coding standards
+- Write **comprehensive tests**
+- Update **documentation**
+- Use **conventional commits**
+- Ensure **backward compatibility**
+
+---
+
+## 📚 Learning Resources
+
+### Documentation & Guides
+
+- [Official Documentation](https://const-ant-laravel-corex-docs.vercel.app/) - Comprehensive guides
+- [Video Tutorials](https://youtube.com/rcvtechnologies) - Step-by-step tutorials
+- [Blog Posts](https://blog.rcvtechnologies.com) - Best practices and tips
+- [Community Forum](https://github.com/rcv-technologies/laravel-core/discussions) - Get help from experts
+
+### Example Projects
+
+```bash
+# Clone example projects
+git clone https://github.com/rcv-technologies/laravel-core-examples.git
+
+# Available examples:
+# 1. E-commerce Platform (15 modules)
+# 2. CMS System (10 modules)
+# 3. API Gateway (8 modules)
+# 4. Multi-tenant SaaS (20 modules)
 ```
 
 ---
 
-## 📊 Monitoring & Analytics
+## 💬 Community & Support
 
-### 📈 Performance Monitoring
-
-```php
-<?php
-
-use RCV\Core\Facades\ModuleMetrics;
-
-// Track module performance
-ModuleMetrics::startTimer('user-creation');
-$user = $this->userService->createUser($data);
-ModuleMetrics::endTimer('user-creation');
-
-// Log module events
-ModuleMetrics::increment('users.created');
-ModuleMetrics::gauge('users.active', $activeUserCount);
-
-// Custom metrics
-ModuleMetrics::histogram('api.response_time', $responseTime);
-```
-
-### 📊 Analytics Dashboard
-
-The package includes a built-in analytics dashboard:
-
-- 📊 **Module Performance Metrics**
-- 🔍 **Error Tracking and Logging**
-- 📈 **Usage Statistics**
-- 🎯 **Performance Bottlenecks**
-- 📱 **Real-time Monitoring**
-
----
-
-## 🔧 Advanced Configuration Examples
-
-### ⚙️ Custom Module Configuration
-
-```php
-<?php
-
-// modules/UserManagement/Config/config.php
-<?php
-
-return [
-    /*
-    |--------------------------------------------------------------------------
-    | UserManagement Module Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define all of the configuration settings for the UserManagement module.
-    |
-    */
-
-    'name' => 'UserManagement',
-    'version' => '1.0.0',
-    'description' => 'UserManagement module for the application',
-    'author' => 'Your Name',
-    'email' => 'your.email@example.com',
-    'website' => 'https://example.com',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Module Settings
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define all of the settings for the UserManagement module.
-    |
-    */
-
-    'settings' => [
-        'enabled' => true,
-        'debug' => false,
-        'cache' => true,
-        'cache_ttl' => 3600,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Module Dependencies
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define all of the dependencies for the UserManagement module.
-    |
-    */
-
-    'dependencies' => [
-        // 'Core',
-        // 'Auth',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Module Permissions
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define all of the permissions for the UserManagement module.
-    |
-    */
-
-    'permissions' => [
-        'view' => 'View UserManagement',
-        'create' => 'Create UserManagement',
-        'edit' => 'Edit UserManagement',
-        'delete' => 'Delete UserManagement',
-    ],
-]; 
-```
-
-### 🔄 Event Configuration
-
-```php
-<?php
-
-// modules/UserManagement/Providers/EventServiceProvider.php
-class EventServiceProvider extends ServiceProvider
-{
-    protected $listen = [
-        UserCreated::class => [
-            SendWelcomeEmail::class,
-            CreateUserProfile::class,
-            LogUserActivity::class,
-            NotifyAdministrators::class,
-        ],
-        
-        UserUpdated::class => [
-            InvalidateUserCache::class,
-            LogProfileChanges::class,
-        ],
-        
-        UserDeleted::class => [
-            CleanupUserData::class,
-            NotifyRelatedUsers::class,
-            ArchiveUserHistory::class,
-        ],
-        
-        // External events this module listens to
-        'Modules\Notification\Events\NotificationSent' => [
-            UpdateNotificationStatus::class,
-        ],
-    ];
-}
-```
-
----
-
----
-
-## 🎉 Community & Support
-
-### 💬 Get Involved
-
-<div align="center">
+### Get Involved
 
 [![GitHub Discussions](https://img.shields.io/github/discussions/rcv-technologies/laravel-core?style=for-the-badge&logo=github)](https://github.com/rcv-technologies/laravel-core/discussions)
-[![Discord](https://img.shields.io/discord/123456789?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/laravel-core)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-laravel--core--module-orange?style=for-the-badge&logo=stackoverflow)](https://stackoverflow.com/questions/tagged/laravel-core-module)
 
-</div>
+### Support Channels
 
-### 🆘 Support Channels
-
-- 📧 **Email Support**: support@rcvtechnologies.com
-- 💬 **Live Chat**: Available on our website
-- 📱 **Social Media**: Follow us for updates
+- **Email Support**: support@rcvtechnologies.com
+- **Documentation**: [docs.rcvtechnologies.com](https://const-ant-laravel-corex-docs.vercel.app/)
+- **Social Media**: Follow us for updates
   - [Twitter](https://twitter.com/rcvtechnologies)
   - [LinkedIn](https://linkedin.com/company/rcv-technologies)
-  - [YouTube](https://youtube.com/rcvtechnologies)
 
-### 🎓 Training & Consulting
+---
 
-- 🏫 **Training Workshops** - Learn modular Laravel development
-- 👨‍💼 **Consulting Services** - Architecture design and implementation
-- 🎯 **Code Reviews** - Expert review of your modules
-- 🚀 **Migration Services** - Migrate existing applications to modular architecture
+## 📈 Roadmap
+
+### Current Version (1.x)
+- ✅ Module Management System
+- ✅ 50+ Artisan Commands  
+- ✅ Service Repository Pattern
+- ✅ Event-Driven Architecture
+- ✅ DevOps Integration
+
+### Upcoming Features (2.x)
+- 🔄 GraphQL Module Support
+- 🔄 Advanced Caching Strategies
+- 🔄 Microservices Communication
+- 🔄 AI-Powered Code Generation
+- 🔄 Enhanced Performance Analytics
+
+### Future Vision (3.x)
+- 🚀 Cloud-Native Module Deployment
+- 🚀 Real-time Module Synchronization
+- 🚀 Advanced Security Frameworks
+- 🚀 Machine Learning Integration
+
+---
+
+## 🏆 Success Stories
+
+### Trusted by Leading Organizations
+
+| Company | Industry | Modules Used | Performance Gain |
+|---------|----------|--------------|------------------|
+| **RCV Technologies** | SaaS Platform | 25+ modules | 40% faster development |
+
+*"Laravel Core Module transformed our development process. We reduced our time-to-market by 40% and improved code maintainability significantly."* - **CTO, RCV Technologies**
 
 ---
 
@@ -1294,24 +1224,17 @@ Special thanks to all contributors and the Laravel community:
 - **nwidart/laravel-modules** - For inspiration and initial concepts  
 - **Our Contributors** - Everyone who has contributed code, documentation, and feedback
 
-### 🏆 Hall of Fame
+---
 
-<div align="center">
+## 📄 License
 
-| Contributor | Contributions | Impact |
-|-------------|---------------|--------|
-| [@rajatjha](https://github.com/johndoe) | 50+ commits | 🚀 Core architecture |
-| [@Sadik   ](https://github.com/janedoe) | 30+ commits | 📚 Documentation |
-| [@devexpert](https://github.com/devexpert) | 25+ commits | 🧪 Testing framework |
-| [@designguru](https://github.com/designguru) | 20+ commits | 🎨 UI/UX improvements |
-
-</div>
+Laravel Core Module is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ---
 
 <div align="center">
 
-## 🚀 Ready to Build Something Amazing?
+## Ready to Build Something Amazing?
 
 ```bash
 composer require rcv/core
@@ -1320,109 +1243,12 @@ php artisan module:make YourAwesomeModule
 
 **Join thousands of developers building scalable Laravel applications with modular architecture!**
 
-[![Get Started](https://img.shields.io/badge/Get%20Started-Now-success?style=for-the-badge&logo=laravel)](https://docs.rcvtechnologies.com/laravel-core-module/quick-start)
+[![Get Started](https://img.shields.io/badge/Get%20Started-Now-success?style=for-the-badge&logo=laravel)](https://const-ant-laravel-corex-docs.vercel.app/)
 [![View Examples](https://img.shields.io/badge/View-Examples-blue?style=for-the-badge&logo=github)](https://github.com/rcv-technologies/laravel-core-examples)
-[![Join Community](https://img.shields.io/badge/Join-Community-purple?style=for-the-badge&logo=discord)](https://discord.gg/laravel-core)
+[![Join Community](https://img.shields.io/badge/Join-Community-purple?style=for-the-badge&logo=github)](https://github.com/rcv-technologies/laravel-core/discussions)
 
 ---
 
 **Built with ❤️ by [RCV Technologies](https://rcvtechnologies.com)**
 
 *Empowering developers to build better Laravel applications*
-
-</div>
-
-# RCV Core
-
-
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin http://10.10.1.50:9000/laravel-packagist/rcv-core.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](http://10.10.1.50:9000/laravel-packagist/rcv-core/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
-
